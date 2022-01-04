@@ -1,0 +1,8 @@
+# IntelliJ
+.idea/
+
+# python venv
+venv/
+
+# testing
+.pytest_cache/
