@@ -17,5 +17,9 @@ def test_capitalize_two_words():
     assert capitalize('hello world') == 'Hello World'
 
 
+def test_capitalize_bulgarian():
+    assert capitalize('светослав') == 'Светослав'
+
+
 def test_capitalize_hungarian():
     assert capitalize('áron') == 'Áron'

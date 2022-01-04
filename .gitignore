@@ -6,3 +6,4 @@ venv/
 
 # testing
 .pytest_cache/
+results.xml
