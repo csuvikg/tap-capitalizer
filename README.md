@@ -9,6 +9,11 @@ python3 -m venv venv
 pip3 install -r requirements.txt
 ```
 
+## Linting the app
+```shell
+pylint app.py
+```
+
 ## Testing the app
 ```shell
 py.test --junitxml results.xml test.py
