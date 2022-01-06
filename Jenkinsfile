@@ -17,7 +17,7 @@ pipeline {
         stage('Lint code') {
             steps {
                 // Lint
-                sh 'pytlint app.py'
+                sh 'pylint app.py'
             }
         }
 
