@@ -1,6 +1,12 @@
 pipeline {
     agent { node { label 'docker' } }
 
+    parameters {
+        parameters {
+            text(name: 'SONARQUBE_CREDENTIALS_ID', defaultValue: 'capitalizer-sonarqube')
+        }
+    }
+
     // checkout code from GitHub
 
     stages {
@@ -22,7 +28,7 @@ pipeline {
         stage('Run sonarqube') {
             steps {
                 // Run sonarqube
-                withCredentials([string(credentialsId: 'capitalizer-sonarqube', variable: 'SONARQUBE_TOKEN')]) {
+                withCredentials([string(credentialsId: parameters.SONARQUBE_CREDENTIALS_ID, variable: 'SONARQUBE_TOKEN')]) {
                     sh '''sonar-scanner \
                           -Dsonar.projectKey=capitalizer \
                           -Dsonar.sources=. \
