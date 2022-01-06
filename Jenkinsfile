@@ -14,13 +14,12 @@ pipeline {
             }
         }
 
-        stage('Lint code') {
-            steps {
-                // Lint
-                sh '. venv/bin/activate'
-                sh 'pylint app.py'
-            }
-        }
+//         stage('Lint code') {
+//             steps {
+//                 // Lint
+//                 sh 'pylint app.py'
+//             }
+//         }
 
         stage('Run sonarqube') {
             steps {
