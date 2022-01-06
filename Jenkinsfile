@@ -26,7 +26,7 @@ pipeline {
         stage('Run sonarqube') {
             steps {
                 // Run sonarqube
-                withCredentials([string(credentialsId: parameters.SONARQUBE_CREDENTIALS_ID, variable: 'SONARQUBE_TOKEN')]) {
+                withCredentials([string(credentialsId: params.SONARQUBE_CREDENTIALS_ID, variable: 'SONARQUBE_TOKEN')]) {
                     sh '''sonar-scanner \
                           -Dsonar.projectKey=capitalizer \
                           -Dsonar.sources=. \
