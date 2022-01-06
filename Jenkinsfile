@@ -2,9 +2,7 @@ pipeline {
     agent { node { label 'docker' } }
 
     parameters {
-        parameters {
-            text(name: 'SONARQUBE_CREDENTIALS_ID', defaultValue: 'capitalizer-sonarqube')
-        }
+        text(name: 'SONARQUBE_CREDENTIALS_ID', defaultValue: 'capitalizer-sonarqube')
     }
 
     // checkout code from GitHub
