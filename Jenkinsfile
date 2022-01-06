@@ -3,6 +3,7 @@ pipeline {
 
     parameters {
         string(name: 'SONARQUBE_CREDENTIALS_ID', defaultValue: 'capitalizer-sonarqube')
+        string(name: 'DOCKER_IMAGE', defaultValue: 'csuvikg/tap-capitalizer')
         string(name: 'DOCKER_TAG', defaultValue: 'latest')
     }
 
@@ -48,11 +49,21 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 // build docker image
-                sh "docker build . --tag tap-capitalizer:${params.DOCKER_TAG}"
+                sh "docker build . --tag ${params.DOCKER_IMAGE}:${params.DOCKER_TAG}"
             }
-
         }
-        // push to docker registry (Docker Hub)
+
+        stage('Push Docker image') {
+            steps {
+                withCredentials([
+                    usernamePassword(credentialsId: 'dockerhub-csuvikg', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')
+                ]) {
+                    // push to docker registry (Docker Hub)
+                    sh "docker login -u $USERNAME -p $PASSWORD"
+                    sh "docker push ${params.DOCKER_IMAGE}:${params.DOCKER_TAG}"
+                }
+            }
+        }
         // connect to cluster
         // deploy to K8S
     }
