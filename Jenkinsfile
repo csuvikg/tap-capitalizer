@@ -5,6 +5,10 @@ pipeline {
         string(name: 'SONARQUBE_CREDENTIALS_ID', defaultValue: 'capitalizer-sonarqube')
     }
 
+    parameters {
+        string(name: 'DOCKER_TAG', defaultValue: 'latest')
+    }
+
     // checkout code from GitHub
 
     stages {
@@ -43,6 +47,17 @@ pipeline {
                 junit 'results.xml'
             }
         }
+
+        stage('Build Docker image') {
+            steps {
+                // build docker image
+                sh "docker build . --tag tap-capitalizer:${params.DOCKER_TAG}"
+            }
+
+        }
+        // push to docker registry (Docker Hub)
+        // connect to cluster
+        // deploy to K8S
     }
 
     post {
