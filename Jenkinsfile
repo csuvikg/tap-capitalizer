@@ -13,6 +13,7 @@ pipeline {
         stage('Build app') {
             steps {
                 // Create venv
+                sh 'kubectl get nodes'
                 sh 'python3 -m venv venv'
                 sh '. venv/bin/activate && pip3 install -r requirements.txt'
             }
