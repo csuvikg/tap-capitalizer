@@ -14,12 +14,12 @@ pipeline {
             }
         }
 
-//         stage('Lint code') {
-//             steps {
-//                 // Lint
-//                 sh 'pylint app.py'
-//             }
-//         }
+        stage('Lint code') {
+            steps {
+                // Lint
+                sh 'pylint app.py'
+            }
+        }
 
         stage('Run sonarqube') {
             steps {
