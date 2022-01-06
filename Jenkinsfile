@@ -17,6 +17,7 @@ pipeline {
         stage('Lint code') {
             steps {
                 // Lint
+                sh '. venv/bin/activate'
                 sh 'pylint app.py'
             }
         }
