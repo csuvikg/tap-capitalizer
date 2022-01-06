@@ -3,9 +3,6 @@ pipeline {
 
     parameters {
         string(name: 'SONARQUBE_CREDENTIALS_ID', defaultValue: 'capitalizer-sonarqube')
-    }
-
-    parameters {
         string(name: 'DOCKER_TAG', defaultValue: 'latest')
     }
 
