@@ -65,8 +65,15 @@ pipeline {
                 }
             }
         }
-        // connect to cluster
-        // deploy to K8S
+
+        stage('Create service on K8S') {
+            steps {
+                // deploy to K8S
+                // Create kubernetes resource yaml file
+                // Pass docker image to yaml file (sed)
+                // kubectl deploy ..yaml
+            }
+        }
     }
 
     post {
