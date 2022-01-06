@@ -8,16 +8,14 @@ pipeline {
             steps {
                 // Create venv
                 sh 'python3 -m venv venv'
-                sh '. venv/bin/activate'
-                // Install dependencies
-                sh 'pip3 install -r requirements.txt'
+                sh '. venv/bin/activate && pip3 install -r requirements.txt'
             }
         }
 
         stage('Lint code') {
             steps {
                 // Lint
-                sh 'pylint app.py'
+                sh '. venv/bin/activate && pylint app.py'
             }
         }
 
@@ -37,7 +35,7 @@ pipeline {
         stage('Run tests') {
             steps {
                 // Run tests
-                sh 'py.test --junitxml results.xml test.py'
+                sh '. venv/bin/activate && py.test --junitxml results.xml test.py'
                 junit 'results.xml'
             }
         }
