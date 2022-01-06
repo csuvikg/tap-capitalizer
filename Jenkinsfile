@@ -8,7 +8,7 @@ pipeline {
             steps {
                 // Create venv
                 sh 'python3 -m venv venv'
-                sh '. venv/bin/acitvate'
+                sh '. venv/bin/activate'
                 // Install dependencies
                 sh 'pip3 install -r requirements.txt'
             }
